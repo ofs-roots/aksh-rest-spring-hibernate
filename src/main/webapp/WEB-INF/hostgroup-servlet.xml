@@ -6,7 +6,14 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
    <mvc:default-servlet-handler />
    <mvc:annotation-driven />
-   <context:component-scan base-package="com.ofs.controller" />
+      <context:component-scan base-package="com.ofs.controller" />
+      <context:component-scan base-package="com.ofs.service" />
+      <context:component-scan base-package="com.ofs.dao" />
+   
+      <bean id="userdao" class="com.ofs.dao.UserDaoImpl"></bean>
+      <bean id="userService" class="com.ofs.service.UserServiceImpl"></bean>
+      <bean id="hibernateUtil" class="com.ofs.util.HibernateUtil"></bean>
+   
 
    
    </beans>
