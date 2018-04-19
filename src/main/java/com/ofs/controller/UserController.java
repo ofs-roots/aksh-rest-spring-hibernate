@@ -3,13 +3,11 @@ package com.ofs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.ofs.dao.UserDaoImpl;
 import com.ofs.model.HostGroupChild;
 import com.ofs.model.HostGroupModel;
 import com.ofs.model.UserDetails;
@@ -40,7 +38,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
-	public void deleteUser(@RequestParam(value="id", required=true) int id) {
+	public void deleteUser(@PathVariable("id") int id) {
 		userService.delete(id);
 	}
 	
