@@ -1,11 +1,11 @@
-package com.ofs.service;
+package com.ofs.dao;
 
 import java.util.List;
 
 import com.ofs.model.UserDetails;
 
-public interface UserService {
-
+public interface UserDao {
+	
 	int createUser(UserDetails user);
 	List<UserDetails> getUsers();
 	void update(UserDetails user);

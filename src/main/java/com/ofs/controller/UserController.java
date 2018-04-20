@@ -1,9 +1,13 @@
 package com.ofs.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ofs.model.HostGroupChild;
 import com.ofs.model.HostGroupModel;
 import com.ofs.model.UserDetails;
@@ -13,11 +17,29 @@ import com.ofs.service.UserService;
 @RequestMapping("/user")
 
 public class UserController {
-	UserService userService = new UserService();
+	
+	@Autowired
+	UserService userService;
+	
 	
 	@RequestMapping(value="/create",method=RequestMethod.POST)
-	public int create(UserDetails user) {
+	public int create(@RequestBody UserDetails user) {
 		return userService.createUser(user);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public List<UserDetails> getUser(){
+		return userService.getUsers();
+	}
+	
+	@RequestMapping(method=RequestMethod.PUT)
+	public void updateUser(@RequestBody UserDetails user) {
+		 userService.update(user);
+	}
+	
+	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
+	public void deleteUser(@PathVariable("id") int id) {
+		userService.delete(id);
 	}
 	
 

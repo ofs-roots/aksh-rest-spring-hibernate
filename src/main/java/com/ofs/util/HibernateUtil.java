@@ -9,10 +9,6 @@ import org.hibernate.service.ServiceRegistry;
 
 
 
-
-
-
-
 public class HibernateUtil {
 
 
